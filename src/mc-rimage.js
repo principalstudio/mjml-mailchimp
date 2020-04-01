@@ -12,7 +12,6 @@ export default class McRimage extends MjImage {
 
   static allowedAttributes = {
     ...MjImage.allowedAttributes,
-    'max-width': 'string',
     'mc:edit': 'string',
     'mc:hideable': 'string',
   }
@@ -42,7 +41,7 @@ export default class McRimage extends MjImage {
           title: this.getAttribute('title'),
           width: this.getContentWidth(),
           'mc:edit': this.getAttribute('mc:edit'),
-          'max-width': this.getAttribute('max-width'),
+          'max-width': this.getContentWidth(),
         })}
       />
     `
