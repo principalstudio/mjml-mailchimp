@@ -41,7 +41,6 @@ export default class McRimage extends MjImage {
           title: this.getAttribute('title'),
           width: this.getContentWidth(),
           'mc:edit': this.getAttribute('mc:edit'),
-          'max-width': this.getContentWidth(),
         })}
       />
     `
