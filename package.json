@@ -1,6 +1,6 @@
 {
   "name": "@principalstudio/mjml-mailchimp",
-  "version": "0.0.5.principal-1",
+  "version": "0.0.5-principal",
   "description": "Mailchimp compatible MJML v4 components",
   "author": {
     "name": "James Homer",
