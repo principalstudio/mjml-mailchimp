@@ -2,12 +2,12 @@ import MjImage from 'mjml-image'
 import { registerDependencies } from 'mjml-validator'
 
 registerDependencies({
-  'mj-column': ['mc-image2x'],
-  'mj-hero': ['mc-image2x'],
-  'mc-image2x': [],
+  'mj-column': ['mc-rimage'],
+  'mj-hero': ['mc-rimage'],
+  'mc-rimage': [],
 });
 
-export default class McImage2x extends MjImage {
+export default class McRimage extends MjImage {
   static tagOmission = true
 
   static allowedAttributes = {
