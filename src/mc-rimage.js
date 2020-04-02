@@ -24,13 +24,14 @@ export default class McRimage extends MjImage {
   // MODIFIED form https://github.com/mjmlio/mjml/blob/master/packages/mjml-image/src/index.js
   renderImage() {
     const height = this.getAttribute('height')
-    let img = ''
+    let spanStart = ''
+    let spanEnd = ''
 
     if (this.getAttribute('mc:edit')) {
-      img += `<span ${this.htmlAttributes({ 'mc:edit': this.getAttribute('mc:edit') })}>`
+      spanStart += `<span ${this.htmlAttributes({ 'mc:edit': this.getAttribute('mc:edit') })}>`
     }
 
-    img += `
+    const img = `
       <img
         ${this.htmlAttributes({
           alt: this.getAttribute('alt'),
@@ -46,7 +47,7 @@ export default class McRimage extends MjImage {
     `
 
     if (this.getAttribute('mc:edit')) {
-      img += `</span>`
+      spanEnd += `</span>`
     }
 
     if (this.getAttribute('href')) {
@@ -59,12 +60,12 @@ export default class McRimage extends MjImage {
             name: this.getAttribute('name'),
           })}
         >
-          ${img}
+          ${spanStart}${img}${spanEnd}
         </a>
       `
     }
 
-    return img
+    return `${spanStart}${img}${spanEnd}`
   }
 
   // MODIFIED form https://github.com/mjmlio/mjml/blob/master/packages/mjml-image/src/index.js
