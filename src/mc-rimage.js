@@ -27,7 +27,7 @@ export default class McRimage extends MjImage {
     let wrapStart = ''
     let wrapEnd = ''
 
-    if (this.getAttribute('mc:edit') && !this.getAttribute('href')) {
+    if (this.getAttribute('mc:edit')) {
       wrapStart += `<span ${this.htmlAttributes({ 'mc:edit': this.getAttribute('mc:edit') })}>`
     }
 
@@ -45,23 +45,22 @@ export default class McRimage extends MjImage {
       />
     `
 
-    if (this.getAttribute('mc:edit') && !this.getAttribute('href')) {
+    if (this.getAttribute('mc:edit')) {
       wrapEnd += `</span>`
     }
 
     if (this.getAttribute('href')) {
       return `
-        <a
+      ${wrapStart}<a
           ${this.htmlAttributes({
             href: this.getAttribute('href'),
             target: this.getAttribute('target'),
             rel: this.getAttribute('rel'),
             name: this.getAttribute('name'),
-            'mc:edit': this.getAttribute('mc:edit'),
           })}
         >
-          ${wrapStart}${img}${wrapEnd}
-        </a>
+          ${img}
+        </a>${wrapEnd}
       `
     }
 
