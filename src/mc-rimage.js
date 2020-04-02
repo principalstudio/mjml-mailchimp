@@ -24,11 +24,11 @@ export default class McRimage extends MjImage {
   // MODIFIED form https://github.com/mjmlio/mjml/blob/master/packages/mjml-image/src/index.js
   renderImage() {
     const height = this.getAttribute('height')
-    let spanStart = ''
-    let spanEnd = ''
+    let wrapStart = ''
+    let wrapEnd = ''
 
-    if (this.getAttribute('mc:edit')) {
-      spanStart += `<span ${this.htmlAttributes({ 'mc:edit': this.getAttribute('mc:edit') })}>`
+    if (this.getAttribute('mc:edit') && !this.getAttribute('href')) {
+      wrapStart += `<span ${this.htmlAttributes({ 'mc:edit': this.getAttribute('mc:edit') })}>`
     }
 
     const img = `
@@ -41,13 +41,12 @@ export default class McRimage extends MjImage {
           style: 'img',
           title: this.getAttribute('title'),
           width: this.getContentWidth(),
-          'mc:edit': this.getAttribute('mc:edit'),
         })}
       />
     `
 
-    if (this.getAttribute('mc:edit')) {
-      spanEnd += `</span>`
+    if (this.getAttribute('mc:edit') && !this.getAttribute('href')) {
+      wrapEnd += `</span>`
     }
 
     if (this.getAttribute('href')) {
@@ -58,14 +57,15 @@ export default class McRimage extends MjImage {
             target: this.getAttribute('target'),
             rel: this.getAttribute('rel'),
             name: this.getAttribute('name'),
+            'mc:edit': this.getAttribute('mc:edit'),
           })}
         >
-          ${spanStart}${img}${spanEnd}
+          ${wrapStart}${img}${wrapEnd}
         </a>
       `
     }
 
-    return `${spanStart}${img}${spanEnd}`
+    return `${wrapStart}${img}${wrapEnd}`
   }
 
   // MODIFIED form https://github.com/mjmlio/mjml/blob/master/packages/mjml-image/src/index.js
